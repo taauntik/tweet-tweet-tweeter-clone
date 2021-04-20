@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import { HandThumbsUp } from "react-bootstrap-icons";
+import TweetContext from "../../App";
 import "./Tweet.css";
 
-function Tweet({ tweet, tweets, key, setTweets }) {
+function Tweet({ tweet, tweets, setTweets }) {
+  // const [tweets, setTweets] = useContext(TweetContext);
   const handleLikeBtn = (id) => {
-    let mytweet = tweets.find((post) => post.id == id);
-    console.log(tweet);
-    let isLiked = mytweet.liked;
-    const others = tweets.filter((post) => post.id !== id);
-    mytweet.liked = !isLiked;
-    setTweets([tweet, ...others]);
+    const likedTweet = [...tweets];
+    const liked = likedTweet.find((post) => post.id == id);
+    const isLiked = liked.liked;
+    liked.liked = !isLiked;
+    setTweets(likedTweet);
   };
   console.log(tweet.id);
   return (
@@ -18,11 +19,11 @@ function Tweet({ tweet, tweets, key, setTweets }) {
       <p>{tweet.description}</p>
       <div>
         {tweet.liked ? (
-          <Button onClick={() => handleLikeBtn(tweet.id)} variant="primary">
+          <Button onClick={() => handleLikeBtn(tweet.id)} variant="success">
             Liked <HandThumbsUp />
           </Button>
         ) : (
-          <Button onClick={() => handleLikeBtn(tweet.id)} variant="success">
+          <Button onClick={() => handleLikeBtn(tweet.id)} variant="primary">
             Like <HandThumbsUp />
           </Button>
         )}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import { Twitter } from "react-bootstrap-icons";
 import Tweet from "./components/Tweet/Tweet";
@@ -7,6 +7,12 @@ import TweetForm from "./components/TweetForm/TweetForm";
 function App() {
   const [tweets, setTweets] = useState([
     {
+      id: 0,
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti repudiandae laborum fugit! Mollitia perspiciatis ab qui, at id dolorib autem architecto, explicabo recusandae quia delectus dicta vel ex odio.",
+      liked: false,
+    },
+    {
       id: 1,
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti repudiandae laborum fugit! Mollitia perspiciatis ab qui, at id dolorib autem architecto, explicabo recusandae quia delectus dicta vel ex odio.",
@@ -14,12 +20,6 @@ function App() {
     },
     {
       id: 2,
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti repudiandae laborum fugit! Mollitia perspiciatis ab qui, at id dolorib autem architecto, explicabo recusandae quia delectus dicta vel ex odio.",
-      liked: false,
-    },
-    {
-      id: 3,
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti repudiandae laborum fugit! Mollitia perspiciatis ab qui, at id dolorib autem architecto, explicabo recusandae quia delectus dicta vel ex odio.",
       liked: false,
