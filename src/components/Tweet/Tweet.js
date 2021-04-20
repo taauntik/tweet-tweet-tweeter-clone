@@ -5,11 +5,11 @@ import "./Tweet.css";
 
 function Tweet({ tweet, tweets, key, setTweets }) {
   const handleLikeBtn = (id) => {
-    let tweet = tweets.find((post) => post.id == id);
+    let mytweet = tweets.find((post) => post.id == id);
     console.log(tweet);
-    let isLiked = false;
+    let isLiked = mytweet.liked;
     const others = tweets.filter((post) => post.id !== id);
-    tweet.liked = !isLiked;
+    mytweet.liked = !isLiked;
     setTweets([tweet, ...others]);
   };
   console.log(tweet.id);
